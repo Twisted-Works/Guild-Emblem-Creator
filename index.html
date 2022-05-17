@@ -1,0 +1,269 @@
+<!doctype HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+  <title>World of Warcraft Guild Tabard Designer</title>
+<style>
+
+    /*normalize.css*/
+    html {font-family: "Helvetica", "Tahoma", sans-serif; font-weight: 400; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #101820; font-size:62.5%;}
+    body {font-size:14px; font-size:1.4rem; margin: 0;}
+    article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {display: block;}
+    audio, canvas, progress, video {display: inline-block;vertical-align: baseline;}
+    audio:not([controls]) {display: none; height: 0;}
+    [hidden], template {display: none;}
+    a{background-color: transparent; color: #08a3e1; text-decoration: none;transition: all .2s ease-in-out; -webkit-transition: all .2s ease-in-out; -moz-transition: all .2s ease-in-out; -o-transition: all .2s ease-in-out; -ms-transition: all .2s ease-in-out;}
+    a:active, a:hover {outline: 0;}
+    a:hover {text-decoration:underline;}
+    abbr[title] {border-bottom: 1px dotted}
+    b, strong {font-weight: 600;}
+    dfn {font-style: italic;}
+    h1 {font-size: 2rem;margin: 0;}
+    h1, h2, h3, h4, h5, h6 {font-weight:600;}
+    mark {background: #ff0; color: #000;}
+    small {font-size: 80%}
+    sub, sup {font-size: 75%;line-height: 0;position: relative; vertical-align: baseline}
+    sup {top: -.5em}
+    sub {bottom: -.25em}
+    img {border: 0}
+    svg:not(:root) {overflow: hidden}
+    figure {margin: 1em 40px}
+    hr {-moz-box-sizing: content-box;box-sizing: content-box;height: 0}
+    pre {overflow: auto}
+    code, kbd, pre, samp {font-family: monospace, monospace;font-size: 1em}
+    button, input, optgroup, select, textarea {color: inherit;font: inherit;margin: 0}
+    button {overflow: visible}
+    button, select {text-transform: none}
+    button, html input[type="button"], /* 1 */
+    input[type="reset"], input[type="submit"] { -webkit-appearance: button; cursor: pointer}
+    button[disabled], html input[disabled] {cursor: default}
+    button::-moz-focus-inner, input::-moz-focus-inner { border: 0;padding: 0}
+    input {line-height: normal}
+    input[type="checkbox"], input[type="radio"] {box-sizing: border-box; padding: 0}
+    input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {height: auto}
+    fieldset { border: 1px solid silver; margin: 0 2px;padding: .35em .625em .75em}
+    legend {border: 0;padding: 0}
+    textarea {overflow: auto}
+    optgroup {font-weight: 600}
+    table { border-collapse: collapse;border-spacing: 0}
+    td, th {padding: 0}
+    *, *:after, *:before {margin: 0;padding: 0;vertical-align: top;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+    body { -webkit-animation-delay: 0.1s; -webkit-animation-name: fontfix; -webkit-animation-duration: 0.1s; -webkit-animation-iteration-count: 1;    -webkit-animation-timing-function: linear; background: #e6e8ec;}
+    @-webkit-keyframes fontfix {from {opacity: 1;} to {opacity: 1;}}
+
+    body {background-color:#fff;}
+
+    #the_tabard {position:fixed; text-align:center; top: 0; left: 0; right: 0; text-align:center; background: url('wowpi_assets/gradient.png') bottom repeat-x; padding-bottom: 59px;}
+    .tabard_container {background: #fff; padding-top: 30px; min-height: 228px; width: 100%; max-width: 900px; text-align:center; margin: 0 auto;}
+    .tabard_container .tabard {max-width:216px; display:inline-block; width:50%; background:#fff;}
+    .tabard_container .description {padding-top:30px; display:inline-block; text-align:center; padding-left:30px;width:50%;}
+    .tabard_container .description p {margin-bottom: 20px; font-size: 18px; color:#666; line-height: 24px;}
+    .container {margin: 300px auto 30px; max-width: 900px; text-align:center;}
+    #faction, #colors, #colorsinput, #border, #icon {border-bottom: 1px solid #009def; padding: 20px 0;}
+    #faction:before, #faction:after, #colors:before, #colors:after, #colorsinput:before, #colorsinput:after, #border:before, #border:after, #icon:before, #icon:after, .tabard_container:before, .tabard_container:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    #colors, #colorsinput {clear:both;}
+    #colors > div, #colorsinput > div {width: 33%; float: left; padding-right: 20px}
+    #colors > div:last-of-type, #colorsinput > div:last-of-type {width: 34%; padding-right: 0;}
+    .color_sample {width: 40px; height:40px; display:inline-block; margin: 1px;-webkit-border-radius: 2px; -moz-border-radius: 2px;border-radius: 2px; border: 3px solid #bcbcbc;}
+    .color_sample.selected {border-color:#666;}
+    .color_sample a {display:block; width:100%; height:100%;}
+  #border a img, #icon a img{padding: 3px; -webkit-border-radius: 2px; -moz-border-radius: 2px;border-radius: 2px; border: 3px solid #eee; margin: 1px;}
+  #border a.selected img. #icon a.selected img {border-color: #666;}
+  #border a img {width:99px; height: 106px;}
+  #icon a img {width:60px; height: 60px;}
+  
+    @media all and (max-width: 770px) {
+        .tabard_container .description p {margin-bottom: 10px; font-size: 13px; color:#666; line-height: 16px;}
+    }
+    @media all and (max-width: 460px) {
+        #the_tabard {padding-bottom: 20px;}
+        .tabard_container {padding-top: 10px; margin:0 auto; text-align:center;}
+        .tabard_container .tabard {display:block; width:100%; text-align:center; max-width: none;}
+        .tabard_container .description {padding-top:10px; display:block; text-align:center; padding-left:0;width:100%;}
+        .container {margin: 350px auto 30px;}
+        #colors > div, #colorsinput > div {width: 100%; float:none; padding-right: 0}
+        #colors > div:last-of-type, #colorsinput > div:last-of-type {width: 100%;}
+    }
+</style>
+</head>
+<body>
+<div id="the_tabard">
+</div>
+<div class="container">
+
+    <div id="the_settings">
+
+        <div id="faction">
+            <h2>Choose your faction</h2>
+            <a href="#" data-side="alliance" title="Alliance"><img src="wowpi_assets/alliance.png" /></a>
+            <a href="#" data-side="horde" title="Horde"><img src="wowpi_assets/horde.png" /></a>
+        </div>
+
+        <div id="colors">
+            <div id="bgcolor">
+                <h2>Choose Tabard Color</h2>
+                <div class="color_sample" style="background-color:#d72070"><a href="#" data-backgroundcolor="d72070"></a></div><div class="color_sample" style="background-color:#ab004c"><a href="#" data-backgroundcolor="ab004c"></a></div><div class="color_sample" style="background-color:#570000"><a href="#" data-backgroundcolor="570000"></a></div><div class="color_sample" style="background-color:#e1691a"><a href="#" data-backgroundcolor="e1691a"></a></div><div class="color_sample" style="background-color:#b43800"><a href="#" data-backgroundcolor="b43800"></a></div><div class="color_sample" style="background-color:#850b00"><a href="#" data-backgroundcolor="850b00"></a></div><div class="color_sample" style="background-color:#ed9716"><a href="#" data-backgroundcolor="ed9716"></a></div><div class="color_sample" style="background-color:#cd6e00"><a href="#" data-backgroundcolor="cd6e00"></a></div><div class="color_sample" style="background-color:#9b3d00"><a href="#" data-backgroundcolor="9b3d00"></a></div><div class="color_sample" style="background-color:#efcf14"><a href="#" data-backgroundcolor="efcf14"></a></div><div class="color_sample" style="background-color:#cfa200"><a href="#" data-backgroundcolor="cfa200"></a></div><div class="color_sample" style="background-color:#9e7100"><a href="#" data-backgroundcolor="9e7100"></a></div><div class="color_sample" style="background-color:#e2d814"><a href="#" data-backgroundcolor="e2d814"></a></div><div class="color_sample" style="background-color:#b7b100"><a href="#" data-backgroundcolor="b7b100"></a></div><div class="color_sample" style="background-color:#858000"><a href="#" data-backgroundcolor="858000"></a></div><div class="color_sample" style="background-color:#ced118"><a href="#" data-backgroundcolor="ced118"></a></div><div class="color_sample" style="background-color:#9fa103"><a href="#" data-backgroundcolor="9fa103"></a></div><div class="color_sample" style="background-color:#707300"><a href="#" data-backgroundcolor="707300"></a></div><div class="color_sample" style="background-color:#99ce1b"><a href="#" data-backgroundcolor="99ce1b"></a></div><div class="color_sample" style="background-color:#6c9a03"><a href="#" data-backgroundcolor="6c9a03"></a></div><div class="color_sample" style="background-color:#416c00"><a href="#" data-backgroundcolor="416c00"></a></div><div class="color_sample" style="background-color:#1ed260"><a href="#" data-backgroundcolor="1ed260"></a></div><div class="color_sample" style="background-color:#049d3f"><a href="#" data-backgroundcolor="049d3f"></a></div><div class="color_sample" style="background-color:#006e0b"><a href="#" data-backgroundcolor="006e0b"></a></div><div class="color_sample" style="background-color:#1dcea9"><a href="#" data-backgroundcolor="1dcea9"></a></div><div class="color_sample" style="background-color:#04987a"><a href="#" data-backgroundcolor="04987a"></a></div><div class="color_sample" style="background-color:#006b4a"><a href="#" data-backgroundcolor="006b4a"></a></div><div class="color_sample" style="background-color:#21b1d6"><a href="#" data-backgroundcolor="21b1d6"></a></div><div class="color_sample" style="background-color:#036d8b"><a href="#" data-backgroundcolor="036d8b"></a></div><div class="color_sample" style="background-color:#00516f"><a href="#" data-backgroundcolor="00516f"></a></div><div class="color_sample" style="background-color:#487dc1"><a href="#" data-backgroundcolor="487dc1"></a></div><div class="color_sample" style="background-color:#265591"><a href="#" data-backgroundcolor="265591"></a></div><div class="color_sample" style="background-color:#002762"><a href="#" data-backgroundcolor="002762"></a></div><div class="color_sample" style="background-color:#bc4bc3"><a href="#" data-backgroundcolor="bc4bc3"></a></div><div class="color_sample" style="background-color:#912a9b"><a href="#" data-backgroundcolor="912a9b"></a></div><div class="color_sample" style="background-color:#6c0880"><a href="#" data-backgroundcolor="6c0880"></a></div><div class="color_sample" style="background-color:#ca11bf"><a href="#" data-backgroundcolor="ca11bf"></a></div><div class="color_sample" style="background-color:#ad00a2"><a href="#" data-backgroundcolor="ad00a2"></a></div><div class="color_sample" style="background-color:#7c0074"><a href="#" data-backgroundcolor="7c0074"></a></div><div class="color_sample" style="background-color:#db1ea0"><a href="#" data-backgroundcolor="db1ea0"></a></div><div class="color_sample" style="background-color:#950061"><a href="#" data-backgroundcolor="950061"></a></div><div class="color_sample" style="background-color:#790044"><a href="#" data-backgroundcolor="790044"></a></div><div class="color_sample" style="background-color:#a06c2c"><a href="#" data-backgroundcolor="a06c2c"></a></div><div class="color_sample" style="background-color:#6c420f"><a href="#" data-backgroundcolor="6c420f"></a></div><div class="color_sample" style="background-color:#351000"><a href="#" data-backgroundcolor="351000"></a></div><div class="color_sample" style="background-color:#0f1a1f"><a href="#" data-backgroundcolor="0f1a1f"></a></div><div class="color_sample" style="background-color:#757c78"><a href="#" data-backgroundcolor="757c78"></a></div><div class="color_sample" style="background-color:#88918b"><a href="#" data-backgroundcolor="88918b"></a></div><div class="color_sample" style="background-color:#9ca69f"><a href="#" data-backgroundcolor="9ca69f"></a></div><div class="color_sample" style="background-color:#d3d3c6"><a href="#" data-backgroundcolor="d3d3c6"></a></div><div class="color_sample" style="background-color:#e56b8c"><a href="#" data-backgroundcolor="e56b8c"></a></div>            </div>
+
+            <div id="bordercolor">
+                <h2>Choose Border Color</h2>
+                <div class="color_sample" style="background-color:#612a2c"><a href="#" data-bordercolor="612a2c"></a></div><div class="color_sample" style="background-color:#6d452e"><a href="#" data-bordercolor="6d452e"></a></div><div class="color_sample" style="background-color:#776524"><a href="#" data-bordercolor="776524"></a></div><div class="color_sample" style="background-color:#767224"><a href="#" data-bordercolor="767224"></a></div><div class="color_sample" style="background-color:#6c7624"><a href="#" data-bordercolor="6c7624"></a></div><div class="color_sample" style="background-color:#556c30"><a href="#" data-bordercolor="556c30"></a></div><div class="color_sample" style="background-color:#4c6d30"><a href="#" data-bordercolor="4c6d30"></a></div><div class="color_sample" style="background-color:#306c42"><a href="#" data-bordercolor="306c42"></a></div><div class="color_sample" style="background-color:#30696b"><a href="#" data-bordercolor="30696b"></a></div><div class="color_sample" style="background-color:#30506c"><a href="#" data-bordercolor="30506c"></a></div><div class="color_sample" style="background-color:#373c64"><a href="#" data-bordercolor="373c64"></a></div><div class="color_sample" style="background-color:#573664"><a href="#" data-bordercolor="573664"></a></div><div class="color_sample" style="background-color:#64374c"><a href="#" data-bordercolor="64374c"></a></div><div class="color_sample" style="background-color:#673335"><a href="#" data-bordercolor="673335"></a></div><div class="color_sample" style="background-color:#999f95"><a href="#" data-bordercolor="999f95"></a></div><div class="color_sample" style="background-color:#262e26"><a href="#" data-bordercolor="262e26"></a></div><div class="color_sample" style="background-color:#9b5e1c"><a href="#" data-bordercolor="9b5e1c"></a></div>            </div>
+
+            <div id="iconcolor">
+                <h2>Choose Emblem Color</h2>
+                <div class="color_sample" style="background-color:#660020"><a href="#" data-iconcolor="660020"></a></div><div class="color_sample" style="background-color:#672300"><a href="#" data-iconcolor="672300"></a></div><div class="color_sample" style="background-color:#674500"><a href="#" data-iconcolor="674500"></a></div><div class="color_sample" style="background-color:#675600"><a href="#" data-iconcolor="675600"></a></div><div class="color_sample" style="background-color:#626600"><a href="#" data-iconcolor="626600"></a></div><div class="color_sample" style="background-color:#506600"><a href="#" data-iconcolor="506600"></a></div><div class="color_sample" style="background-color:#366600"><a href="#" data-iconcolor="366600"></a></div><div class="color_sample" style="background-color:#00661e"><a href="#" data-iconcolor="00661e"></a></div><div class="color_sample" style="background-color:#006656"><a href="#" data-iconcolor="006656"></a></div><div class="color_sample" style="background-color:#004866"><a href="#" data-iconcolor="004866"></a></div><div class="color_sample" style="background-color:#092a5e"><a href="#" data-iconcolor="092a5e"></a></div><div class="color_sample" style="background-color:#56095e"><a href="#" data-iconcolor="56095e"></a></div><div class="color_sample" style="background-color:#5d0a4f"><a href="#" data-iconcolor="5d0a4f"></a></div><div class="color_sample" style="background-color:#54360a"><a href="#" data-iconcolor="54360a"></a></div><div class="color_sample" style="background-color:#b1b7b0"><a href="#" data-iconcolor="b1b7b0"></a></div><div class="color_sample" style="background-color:#101416"><a href="#" data-iconcolor="101416"></a></div><div class="color_sample" style="background-color:#dda35a"><a href="#" data-iconcolor="dda35a"></a></div>            </div>
+        </div>
+
+        <div id="colorsinput">
+            <h2>Want to be original? Put your own colors<br />(but I can guarantee you that you won't see it in game)</h2>
+            <div>
+                <h3>Tabard Color</h3>
+                #<input type="text" name="inputbackgroundcolor" id="inputbackgroundcolor" value="036d8b" />
+            </div>
+            <div>
+                <h3>Border Color</h3>
+                #<input type="text" name="inputbordercolor" id="inputbordercolor" value="999f95" />
+            </div>
+            <div>
+                <h3>Emblem Color</h3>
+                #<input type="text" name="inputiconcolor" id="inputiconcolor" value="d3d3c6" />
+            </div>
+        </div>
+
+        <div id="border">
+            <h2>Choose Border</h2>
+            <a href="#" data-border="00"><img src="./wowpi_assets/border_00.png" /></a><a href="#" data-border="01"><img src="./wowpi_assets/border_01.png" /></a><a href="#" data-border="02"><img src="./wowpi_assets/border_02.png" /></a><a href="#" data-border="03"><img src="./wowpi_assets/border_03.png" /></a><a href="#" data-border="04"><img src="./wowpi_assets/border_04.png" /></a><a href="#" data-border="05"><img src="./wowpi_assets/border_05.png" /></a><a href="#" data-border="06"><img src="./wowpi_assets/border_06.png" /></a>        </div>
+
+        <div id="icon">
+            <h2>Choose Emblem</h2>
+            <a href="#" data-icon="00"><img src="./wowpi_assets/emblem_00.png" /></a><a href="#" data-icon="01"><img src="./wowpi_assets/emblem_01.png" /></a><a href="#" data-icon="02"><img src="./wowpi_assets/emblem_02.png" /></a><a href="#" data-icon="03"><img src="./wowpi_assets/emblem_03.png" /></a><a href="#" data-icon="04"><img src="./wowpi_assets/emblem_04.png" /></a><a href="#" data-icon="05"><img src="./wowpi_assets/emblem_05.png" /></a><a href="#" data-icon="06"><img src="./wowpi_assets/emblem_06.png" /></a><a href="#" data-icon="07"><img src="./wowpi_assets/emblem_07.png" /></a><a href="#" data-icon="08"><img src="./wowpi_assets/emblem_08.png" /></a><a href="#" data-icon="09"><img src="./wowpi_assets/emblem_09.png" /></a><a href="#" data-icon="10"><img src="./wowpi_assets/emblem_10.png" /></a><a href="#" data-icon="11"><img src="./wowpi_assets/emblem_11.png" /></a><a href="#" data-icon="12"><img src="./wowpi_assets/emblem_12.png" /></a><a href="#" data-icon="13"><img src="./wowpi_assets/emblem_13.png" /></a><a href="#" data-icon="14"><img src="./wowpi_assets/emblem_14.png" /></a><a href="#" data-icon="15"><img src="./wowpi_assets/emblem_15.png" /></a><a href="#" data-icon="16"><img src="./wowpi_assets/emblem_16.png" /></a><a href="#" data-icon="17"><img src="./wowpi_assets/emblem_17.png" /></a><a href="#" data-icon="18"><img src="./wowpi_assets/emblem_18.png" /></a><a href="#" data-icon="19"><img src="./wowpi_assets/emblem_19.png" /></a><a href="#" data-icon="20"><img src="./wowpi_assets/emblem_20.png" /></a><a href="#" data-icon="21"><img src="./wowpi_assets/emblem_21.png" /></a><a href="#" data-icon="22"><img src="./wowpi_assets/emblem_22.png" /></a><a href="#" data-icon="23"><img src="./wowpi_assets/emblem_23.png" /></a><a href="#" data-icon="24"><img src="./wowpi_assets/emblem_24.png" /></a><a href="#" data-icon="25"><img src="./wowpi_assets/emblem_25.png" /></a><a href="#" data-icon="26"><img src="./wowpi_assets/emblem_26.png" /></a><a href="#" data-icon="27"><img src="./wowpi_assets/emblem_27.png" /></a><a href="#" data-icon="28"><img src="./wowpi_assets/emblem_28.png" /></a><a href="#" data-icon="29"><img src="./wowpi_assets/emblem_29.png" /></a><a href="#" data-icon="30"><img src="./wowpi_assets/emblem_30.png" /></a><a href="#" data-icon="31"><img src="./wowpi_assets/emblem_31.png" /></a><a href="#" data-icon="32"><img src="./wowpi_assets/emblem_32.png" /></a><a href="#" data-icon="33"><img src="./wowpi_assets/emblem_33.png" /></a><a href="#" data-icon="34"><img src="./wowpi_assets/emblem_34.png" /></a><a href="#" data-icon="35"><img src="./wowpi_assets/emblem_35.png" /></a><a href="#" data-icon="36"><img src="./wowpi_assets/emblem_36.png" /></a><a href="#" data-icon="37"><img src="./wowpi_assets/emblem_37.png" /></a><a href="#" data-icon="38"><img src="./wowpi_assets/emblem_38.png" /></a><a href="#" data-icon="39"><img src="./wowpi_assets/emblem_39.png" /></a><a href="#" data-icon="40"><img src="./wowpi_assets/emblem_40.png" /></a><a href="#" data-icon="41"><img src="./wowpi_assets/emblem_41.png" /></a><a href="#" data-icon="42"><img src="./wowpi_assets/emblem_42.png" /></a><a href="#" data-icon="43"><img src="./wowpi_assets/emblem_43.png" /></a><a href="#" data-icon="44"><img src="./wowpi_assets/emblem_44.png" /></a><a href="#" data-icon="45"><img src="./wowpi_assets/emblem_45.png" /></a><a href="#" data-icon="46"><img src="./wowpi_assets/emblem_46.png" /></a><a href="#" data-icon="47"><img src="./wowpi_assets/emblem_47.png" /></a><a href="#" data-icon="48"><img src="./wowpi_assets/emblem_48.png" /></a><a href="#" data-icon="49"><img src="./wowpi_assets/emblem_49.png" /></a><a href="#" data-icon="50"><img src="./wowpi_assets/emblem_50.png" /></a><a href="#" data-icon="51"><img src="./wowpi_assets/emblem_51.png" /></a><a href="#" data-icon="52"><img src="./wowpi_assets/emblem_52.png" /></a><a href="#" data-icon="53"><img src="./wowpi_assets/emblem_53.png" /></a><a href="#" data-icon="54"><img src="./wowpi_assets/emblem_54.png" /></a><a href="#" data-icon="55"><img src="./wowpi_assets/emblem_55.png" /></a><a href="#" data-icon="56"><img src="./wowpi_assets/emblem_56.png" /></a><a href="#" data-icon="57"><img src="./wowpi_assets/emblem_57.png" /></a><a href="#" data-icon="58"><img src="./wowpi_assets/emblem_58.png" /></a><a href="#" data-icon="59"><img src="./wowpi_assets/emblem_59.png" /></a><a href="#" data-icon="60"><img src="./wowpi_assets/emblem_60.png" /></a><a href="#" data-icon="61"><img src="./wowpi_assets/emblem_61.png" /></a><a href="#" data-icon="62"><img src="./wowpi_assets/emblem_62.png" /></a><a href="#" data-icon="63"><img src="./wowpi_assets/emblem_63.png" /></a><a href="#" data-icon="64"><img src="./wowpi_assets/emblem_64.png" /></a><a href="#" data-icon="65"><img src="./wowpi_assets/emblem_65.png" /></a><a href="#" data-icon="66"><img src="./wowpi_assets/emblem_66.png" /></a><a href="#" data-icon="67"><img src="./wowpi_assets/emblem_67.png" /></a><a href="#" data-icon="68"><img src="./wowpi_assets/emblem_68.png" /></a><a href="#" data-icon="69"><img src="./wowpi_assets/emblem_69.png" /></a><a href="#" data-icon="70"><img src="./wowpi_assets/emblem_70.png" /></a><a href="#" data-icon="71"><img src="./wowpi_assets/emblem_71.png" /></a><a href="#" data-icon="72"><img src="./wowpi_assets/emblem_72.png" /></a><a href="#" data-icon="73"><img src="./wowpi_assets/emblem_73.png" /></a><a href="#" data-icon="74"><img src="./wowpi_assets/emblem_74.png" /></a><a href="#" data-icon="75"><img src="./wowpi_assets/emblem_75.png" /></a><a href="#" data-icon="76"><img src="./wowpi_assets/emblem_76.png" /></a><a href="#" data-icon="77"><img src="./wowpi_assets/emblem_77.png" /></a><a href="#" data-icon="78"><img src="./wowpi_assets/emblem_78.png" /></a><a href="#" data-icon="79"><img src="./wowpi_assets/emblem_79.png" /></a><a href="#" data-icon="80"><img src="./wowpi_assets/emblem_80.png" /></a><a href="#" data-icon="81"><img src="./wowpi_assets/emblem_81.png" /></a><a href="#" data-icon="82"><img src="./wowpi_assets/emblem_82.png" /></a><a href="#" data-icon="83"><img src="./wowpi_assets/emblem_83.png" /></a><a href="#" data-icon="84"><img src="./wowpi_assets/emblem_84.png" /></a><a href="#" data-icon="85"><img src="./wowpi_assets/emblem_85.png" /></a><a href="#" data-icon="86"><img src="./wowpi_assets/emblem_86.png" /></a><a href="#" data-icon="87"><img src="./wowpi_assets/emblem_87.png" /></a><a href="#" data-icon="88"><img src="./wowpi_assets/emblem_88.png" /></a><a href="#" data-icon="89"><img src="./wowpi_assets/emblem_89.png" /></a><a href="#" data-icon="90"><img src="./wowpi_assets/emblem_90.png" /></a><a href="#" data-icon="91"><img src="./wowpi_assets/emblem_91.png" /></a><a href="#" data-icon="92"><img src="./wowpi_assets/emblem_92.png" /></a><a href="#" data-icon="93"><img src="./wowpi_assets/emblem_93.png" /></a><a href="#" data-icon="94"><img src="./wowpi_assets/emblem_94.png" /></a><a href="#" data-icon="95"><img src="./wowpi_assets/emblem_95.png" /></a><a href="#" data-icon="96"><img src="./wowpi_assets/emblem_96.png" /></a><a href="#" data-icon="97"><img src="./wowpi_assets/emblem_97.png" /></a><a href="#" data-icon="98"><img src="./wowpi_assets/emblem_98.png" /></a><a href="#" data-icon="99"><img src="./wowpi_assets/emblem_99.png" /></a><a href="#" data-icon="100"><img src="./wowpi_assets/emblem_100.png" /></a><a href="#" data-icon="101"><img src="./wowpi_assets/emblem_101.png" /></a><a href="#" data-icon="102"><img src="./wowpi_assets/emblem_102.png" /></a><a href="#" data-icon="103"><img src="./wowpi_assets/emblem_103.png" /></a><a href="#" data-icon="104"><img src="./wowpi_assets/emblem_104.png" /></a><a href="#" data-icon="105"><img src="./wowpi_assets/emblem_105.png" /></a><a href="#" data-icon="106"><img src="./wowpi_assets/emblem_106.png" /></a><a href="#" data-icon="107"><img src="./wowpi_assets/emblem_107.png" /></a><a href="#" data-icon="108"><img src="./wowpi_assets/emblem_108.png" /></a><a href="#" data-icon="109"><img src="./wowpi_assets/emblem_109.png" /></a><a href="#" data-icon="110"><img src="./wowpi_assets/emblem_110.png" /></a><a href="#" data-icon="111"><img src="./wowpi_assets/emblem_111.png" /></a><a href="#" data-icon="112"><img src="./wowpi_assets/emblem_112.png" /></a><a href="#" data-icon="113"><img src="./wowpi_assets/emblem_113.png" /></a><a href="#" data-icon="114"><img src="./wowpi_assets/emblem_114.png" /></a><a href="#" data-icon="115"><img src="./wowpi_assets/emblem_115.png" /></a><a href="#" data-icon="116"><img src="./wowpi_assets/emblem_116.png" /></a><a href="#" data-icon="117"><img src="./wowpi_assets/emblem_117.png" /></a><a href="#" data-icon="118"><img src="./wowpi_assets/emblem_118.png" /></a><a href="#" data-icon="119"><img src="./wowpi_assets/emblem_119.png" /></a><a href="#" data-icon="120"><img src="./wowpi_assets/emblem_120.png" /></a><a href="#" data-icon="121"><img src="./wowpi_assets/emblem_121.png" /></a><a href="#" data-icon="122"><img src="./wowpi_assets/emblem_122.png" /></a><a href="#" data-icon="123"><img src="./wowpi_assets/emblem_123.png" /></a><a href="#" data-icon="124"><img src="./wowpi_assets/emblem_124.png" /></a><a href="#" data-icon="125"><img src="./wowpi_assets/emblem_125.png" /></a><a href="#" data-icon="126"><img src="./wowpi_assets/emblem_126.png" /></a><a href="#" data-icon="127"><img src="./wowpi_assets/emblem_127.png" /></a><a href="#" data-icon="128"><img src="./wowpi_assets/emblem_128.png" /></a><a href="#" data-icon="129"><img src="./wowpi_assets/emblem_129.png" /></a><a href="#" data-icon="130"><img src="./wowpi_assets/emblem_130.png" /></a><a href="#" data-icon="131"><img src="./wowpi_assets/emblem_131.png" /></a><a href="#" data-icon="132"><img src="./wowpi_assets/emblem_132.png" /></a><a href="#" data-icon="133"><img src="./wowpi_assets/emblem_133.png" /></a><a href="#" data-icon="134"><img src="./wowpi_assets/emblem_134.png" /></a><a href="#" data-icon="135"><img src="./wowpi_assets/emblem_135.png" /></a><a href="#" data-icon="136"><img src="./wowpi_assets/emblem_136.png" /></a><a href="#" data-icon="137"><img src="./wowpi_assets/emblem_137.png" /></a><a href="#" data-icon="138"><img src="./wowpi_assets/emblem_138.png" /></a><a href="#" data-icon="139"><img src="./wowpi_assets/emblem_139.png" /></a><a href="#" data-icon="140"><img src="./wowpi_assets/emblem_140.png" /></a><a href="#" data-icon="141"><img src="./wowpi_assets/emblem_141.png" /></a><a href="#" data-icon="142"><img src="./wowpi_assets/emblem_142.png" /></a><a href="#" data-icon="143"><img src="./wowpi_assets/emblem_143.png" /></a><a href="#" data-icon="144"><img src="./wowpi_assets/emblem_144.png" /></a><a href="#" data-icon="145"><img src="./wowpi_assets/emblem_145.png" /></a><a href="#" data-icon="146"><img src="./wowpi_assets/emblem_146.png" /></a><a href="#" data-icon="147"><img src="./wowpi_assets/emblem_147.png" /></a><a href="#" data-icon="148"><img src="./wowpi_assets/emblem_148.png" /></a><a href="#" data-icon="149"><img src="./wowpi_assets/emblem_149.png" /></a><a href="#" data-icon="150"><img src="./wowpi_assets/emblem_150.png" /></a><a href="#" data-icon="151"><img src="./wowpi_assets/emblem_151.png" /></a><a href="#" data-icon="152"><img src="./wowpi_assets/emblem_152.png" /></a><a href="#" data-icon="153"><img src="./wowpi_assets/emblem_153.png" /></a><a href="#" data-icon="154"><img src="./wowpi_assets/emblem_154.png" /></a><a href="#" data-icon="155"><img src="./wowpi_assets/emblem_155.png" /></a><a href="#" data-icon="156"><img src="./wowpi_assets/emblem_156.png" /></a><a href="#" data-icon="157"><img src="./wowpi_assets/emblem_157.png" /></a><a href="#" data-icon="158"><img src="./wowpi_assets/emblem_158.png" /></a><a href="#" data-icon="159"><img src="./wowpi_assets/emblem_159.png" /></a><a href="#" data-icon="160"><img src="./wowpi_assets/emblem_160.png" /></a><a href="#" data-icon="161"><img src="./wowpi_assets/emblem_161.png" /></a><a href="#" data-icon="162"><img src="./wowpi_assets/emblem_162.png" /></a><a href="#" data-icon="163"><img src="./wowpi_assets/emblem_163.png" /></a><a href="#" data-icon="164"><img src="./wowpi_assets/emblem_164.png" /></a><a href="#" data-icon="165"><img src="./wowpi_assets/emblem_165.png" /></a><a href="#" data-icon="166"><img src="./wowpi_assets/emblem_166.png" /></a><a href="#" data-icon="167"><img src="./wowpi_assets/emblem_167.png" /></a><a href="#" data-icon="168"><img src="./wowpi_assets/emblem_168.png" /></a><a href="#" data-icon="169"><img src="./wowpi_assets/emblem_169.png" /></a><a href="#" data-icon="170"><img src="./wowpi_assets/emblem_170.png" /></a><a href="#" data-icon="171"><img src="./wowpi_assets/emblem_171.png" /></a><a href="#" data-icon="172"><img src="./wowpi_assets/emblem_172.png" /></a><a href="#" data-icon="173"><img src="./wowpi_assets/emblem_173.png" /></a><a href="#" data-icon="174"><img src="./wowpi_assets/emblem_174.png" /></a><a href="#" data-icon="175"><img src="./wowpi_assets/emblem_175.png" /></a><a href="#" data-icon="176"><img src="./wowpi_assets/emblem_176.png" /></a><a href="#" data-icon="177"><img src="./wowpi_assets/emblem_177.png" /></a><a href="#" data-icon="178"><img src="./wowpi_assets/emblem_178.png" /></a><a href="#" data-icon="179"><img src="./wowpi_assets/emblem_179.png" /></a><a href="#" data-icon="180"><img src="./wowpi_assets/emblem_180.png" /></a><a href="#" data-icon="181"><img src="./wowpi_assets/emblem_181.png" /></a><a href="#" data-icon="182"><img src="./wowpi_assets/emblem_182.png" /></a><a href="#" data-icon="183"><img src="./wowpi_assets/emblem_183.png" /></a><a href="#" data-icon="184"><img src="./wowpi_assets/emblem_184.png" /></a><a href="#" data-icon="185"><img src="./wowpi_assets/emblem_185.png" /></a><a href="#" data-icon="186"><img src="./wowpi_assets/emblem_186.png" /></a><a href="#" data-icon="187"><img src="./wowpi_assets/emblem_187.png" /></a><a href="#" data-icon="188"><img src="./wowpi_assets/emblem_188.png" /></a><a href="#" data-icon="189"><img src="./wowpi_assets/emblem_189.png" /></a><a href="#" data-icon="190"><img src="./wowpi_assets/emblem_190.png" /></a><a href="#" data-icon="191"><img src="./wowpi_assets/emblem_191.png" /></a><a href="#" data-icon="192"><img src="./wowpi_assets/emblem_192.png" /></a><a href="#" data-icon="193"><img src="./wowpi_assets/emblem_193.png" /></a><a href="#" data-icon="194"><img src="./wowpi_assets/emblem_194.png" /></a><a href="#" data-icon="195"><img src="./wowpi_assets/emblem_195.png" /></a>        </div>
+    </div>
+
+</div>
+  <div style="text-align:center">
+    I've made 282164 Guild Tabards so far (including the intermediary ones)<br />
+    Made with love by <a href="http://avenir.ro/" target="_blank">Avenirer</a>
+  </div>
+<script src="js/jquery-3.0.0.min.js"></script>
+<script>
+    $(function() {
+
+        var side='horde',
+            backgroundColor='036d8b',
+            icon='06',
+            iconColor='b1b7b0',
+            border='1',
+            borderColor='999f95';
+
+
+
+        get_tabard();
+        $('#faction a').on('click', function (e) {
+            side = $(this).data('side');
+            get_tabard();
+            e.preventDefault();
+
+        });
+
+        $('#bgcolor a').on('click', function (e) {
+            backgroundColor = $(this).data('backgroundcolor');
+            $(this).parent().siblings().removeClass('selected');
+            $(this).parent().toggleClass('selected');
+            $('#inputbackgroundcolor').val(backgroundColor);
+            get_tabard();
+            e.preventDefault();
+
+        });
+        $('#inputbackgroundcolor').on('change',function(e)
+        {
+            backgroundColor = $(this).val();
+            get_tabard();
+            e.preventDefault();
+        });
+
+        $('#border a').on('click', function (e) {
+            border = $(this).data('border');
+            $(this).siblings().removeClass('selected');
+            $(this).toggleClass('selected');
+            get_tabard();
+            e.preventDefault();
+
+        });
+        $('#bordercolor a').on('click', function (e) {
+            borderColor = $(this).data('bordercolor');
+            $(this).parent().siblings().removeClass('selected');
+            $(this).parent().toggleClass('selected');
+            $('#inputbordercolor').val(borderColor);
+            get_tabard();
+            e.preventDefault();
+
+        });
+        $('#inputbordercolor').on('change',function(e)
+        {
+            borderColor = $(this).val();
+            get_tabard();
+            e.preventDefault();
+        });
+
+        $('#icon a').on('click', function (e) {
+            icon = $(this).data('icon');
+            get_tabard();
+            e.preventDefault();
+
+        });
+
+
+        $('#iconcolor a').on('click', function (e) {
+            iconColor = $(this).data('iconcolor');
+            $(this).parent().siblings().removeClass('selected');
+            $(this).parent().toggleClass('selected');          
+            $('#inputiconcolor').val(iconColor);
+            get_tabard();
+            e.preventDefault();
+
+        });
+        $('#inputiconcolor').on('change',function(e)
+        {
+            iconColor = $(this).val();
+            get_tabard();
+            e.preventDefault();
+        });
+
+        function get_tabard() {
+
+            $.ajax({
+                url: 'tabard.php',
+                type: 'get',
+                data: {
+                    'side': side,
+                    'backgroundColor': backgroundColor,
+                    'icon': icon,
+                    'iconColor':iconColor,
+                    'border':border,
+                    'borderColor':borderColor
+                },
+                cache: false,
+                success: function (data) {
+                    $('#the_tabard').html(data);
+                }
+            });
+        }
+
+    });
+</script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-16564328-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

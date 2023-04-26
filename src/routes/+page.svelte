@@ -145,6 +145,7 @@
 
     <div id="icon">
       <h2>Choose Emblem</h2>
+      <a href="#" data-icon="star-trek"><img src="img/icons/emblem_star-trek.png" /></a>
       <a href="#" data-icon="00"><img src="img/icons/emblem_00.png" /></a><a href="#" data-icon="01"
         ><img src="img/icons/emblem_01.png" /></a
       ><a href="#" data-icon="02"><img src="img/icons/emblem_02.png" /></a><a href="#" data-icon="03"

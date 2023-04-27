@@ -9,19 +9,14 @@ $(function () {
 
   get_tabard()
 
-  $("#faction a").on("click", function (e) {
+  $("#faction").on("click", "label", function (e) {
     side = $(this).data("side")
     get_tabard()
-    e.preventDefault()
   })
 
-  $("#bgcolor a").on("click", function (e) {
+  $("#bgcolor").on("click", ".color_sample", function (e) {
     backgroundColor = $(this).data("backgroundcolor").substring(1)
-    $(this).parent().siblings().removeClass("selected")
-    $(this).parent().toggleClass("selected")
-    $("#inputbackgroundcolor").val("#" + backgroundColor)
     get_tabard()
-    e.preventDefault()
   })
   $("#inputbackgroundcolor").on("change", function (e) {
     backgroundColor = $(this).val().substring(1)
@@ -29,20 +24,14 @@ $(function () {
     e.preventDefault()
   })
 
-  $("#border a").on("click", function (e) {
+  $("#border").on("click", "label", function (e) {
     border = $(this).data("border")
-    $(this).siblings().removeClass("selected")
-    $(this).toggleClass("selected")
     get_tabard()
-    e.preventDefault()
   })
-  $("#bordercolor a").on("click", function (e) {
+
+  $("#bordercolor").on("click", ".color_sample", function (e) {
     borderColor = $(this).data("bordercolor").substring(1)
-    $(this).parent().siblings().removeClass("selected")
-    $(this).parent().toggleClass("selected")
-    $("#inputbordercolor").val("#" + borderColor)
     get_tabard()
-    e.preventDefault()
   })
   $("#inputbordercolor").on("change", function (e) {
     borderColor = $(this).val().substring(1)
@@ -50,19 +39,14 @@ $(function () {
     e.preventDefault()
   })
 
-  $("#icon a").on("click", function (e) {
+  $("#icon").on("click", "label", function (e) {
     icon = $(this).data("icon")
     get_tabard()
-    e.preventDefault()
   })
 
-  $("#iconcolor a").on("click", function (e) {
+  $("#iconcolor").on("click", ".color_sample", function (e) {
     iconColor = $(this).data("iconcolor").substring(1)
-    $(this).parent().siblings().removeClass("selected")
-    $(this).parent().toggleClass("selected")
-    $("#inputiconcolor").val("#" + iconColor)
     get_tabard()
-    e.preventDefault()
   })
   $("#inputiconcolor").on("change", function (e) {
     iconColor = $(this).val().substring(1)

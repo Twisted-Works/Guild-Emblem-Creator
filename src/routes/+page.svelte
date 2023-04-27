@@ -6,8 +6,6 @@
   import ColorPickers from "./color-pickers.svelte"
   import BorderPicker from "./border-picker.svelte"
   import IconPicker from "./icon-picker.svelte"
-
-  import state from "$lib/store"
 </script>
 
 <svelte:head>

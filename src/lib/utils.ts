@@ -1,5 +1,5 @@
 
-export function loadImage(src: string) {
+export function loadImage(src: string): Promise<HTMLImageElement> {
   let img = new Image()
   img.crossOrigin = null
 

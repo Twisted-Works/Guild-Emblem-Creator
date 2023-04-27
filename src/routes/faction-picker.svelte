@@ -23,10 +23,21 @@
     border-bottom: 1px solid #009def;
     padding: 20px 0;
   }
-  #faction:before,
-  #faction:after {
-    content: "";
-    display: table;
-    clear: both;
+
+  label {
+    cursor: pointer;
+  }
+
+  label img {
+    transition: all .15s ease-out;
+    opacity: 0.65;
+  }
+
+  label input:checked + img {
+    opacity: 1;
+  }
+
+  label:hover input:not(:checked) + img {
+    transform: scale3d(1.1, 1.1, 1);
   }
 </style>

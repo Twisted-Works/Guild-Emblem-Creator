@@ -24,17 +24,8 @@
     padding: 20px 0;
   }
 
-  #border:before,
-  #border:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
   img {
     padding: 3px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
     border-radius: 2px;
     border: 3px solid #eee;
     margin: 1px;
@@ -44,5 +35,9 @@
 
   .selected img {
     border-color: #666;
+  }
+
+  label {
+    cursor: pointer;
   }
 </style>

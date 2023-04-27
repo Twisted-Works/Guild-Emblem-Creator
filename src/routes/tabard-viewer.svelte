@@ -19,5 +19,6 @@
     right: 0;
     text-align: center;
     padding-bottom: 59px;
+    z-index: 100;
   }
 </style>

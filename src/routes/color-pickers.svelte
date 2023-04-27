@@ -49,23 +49,18 @@
     display: none;
   }
 
+  label {
+    font-weight: bold;
+  }
+
   #colors {
     border-bottom: 1px solid #009def;
     padding: 20px 0;
+    display: flex;
   }
 
-  #colors:before,
-  #colors:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  #colors {
-    clear: both;
-  }
   #colors > div {
     width: 33%;
-    float: left;
     padding-right: 20px;
   }
   #colors > div:last-of-type {
@@ -77,19 +72,20 @@
     height: 40px;
     display: inline-block;
     margin: 1px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
     border-radius: 2px;
     border: 3px solid #bcbcbc;
+    cursor: pointer;
   }
   .color_sample.selected {
     border-color: #666;
   }
 
   @media all and (max-width: 460px) {
+    #colors {
+      display: block;
+    }
     #colors > div {
       width: 100%;
-      float: none;
       padding-right: 0;
     }
     #colors > div:last-of-type {

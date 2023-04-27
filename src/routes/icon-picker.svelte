@@ -24,17 +24,12 @@
     padding: 20px 0;
   }
 
-  #icon:before,
-  #icon:after {
-    content: "";
-    display: table;
-    clear: both;
+  label {
+    cursor: pointer;
   }
 
   #icon label img {
     padding: 3px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
     border-radius: 2px;
     border: 3px solid #eee;
     margin: 1px;
